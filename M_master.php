@@ -1,15 +1,11 @@
 <?php
 
 /**
-* 
+* This is model
+* author: adleeize
 */
 class M_master extends CI_model
 {
-	
-	function __construct(argument)
-	{
-		# code...
-	}
 
 	function getDataAll($table, $limit=NULL, $offset=NULL){
 		$sql = $this->db->get($table, $limit, $offset);
@@ -30,13 +26,11 @@ class M_master extends CI_model
 
 	function getDataCustom($table, $select="*", $where="", $limit=NULL, $offset=NULL){
 		if(is_array($where)) {
-
 			// get keys of array
 			$conds = array();
 			foreach(array_keys($where) as $idx) {
 				array_push($conds, $idx);
 			}
-
 			// inject where condition
 			$i = 0;
 			foreach ($where as $cond) {
@@ -58,7 +52,6 @@ class M_master extends CI_model
 
 	function getCountDataCustom($table, $where=""){
 		if(is_array($where)) {
-
 			// get keys of array
 			$conds = array();
 			foreach(array_keys($where) as $idx) {
@@ -75,7 +68,6 @@ class M_master extends CI_model
 		else {
 			// nothing to do
 		}
-
 		$this->db->select("count(id) count");
 		$this->db->get($table);
 		if($sql->num_rows() > 0) {
